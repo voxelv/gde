@@ -7,45 +7,22 @@
 [node name="hired_worker_group" type="HBoxContainer"]
 margin_right = 175.0
 margin_bottom = 32.0
+rect_min_size = Vector2( 0, 40 )
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 32.0
-margin_bottom = 32.0
+margin_bottom = 40.0
 texture = ExtResource( 3 )
+stretch_mode = 4
 
 [node name="progress_list" type="VBoxContainer" parent="."]
 margin_left = 36.0
 margin_right = 175.0
-margin_bottom = 32.0
+margin_bottom = 40.0
 size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_constants/separation = 1
-
-[node name="progress1" type="ProgressBar" parent="progress_list"]
-margin_right = 139.0
-margin_bottom = 10.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-allow_greater = true
-percent_visible = false
-
-[node name="progress2" type="ProgressBar" parent="progress_list"]
-margin_top = 11.0
-margin_right = 139.0
-margin_bottom = 21.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-allow_greater = true
-percent_visible = false
-
-[node name="progress3" type="ProgressBar" parent="progress_list"]
-margin_top = 22.0
-margin_right = 139.0
-margin_bottom = 32.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-allow_greater = true
-percent_visible = false
 

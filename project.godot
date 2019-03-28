@@ -19,6 +19,10 @@ config/name="gde"
 run/main_scene="res://main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+gde_const="*res://const.gd"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
