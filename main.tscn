@@ -1,0 +1,161 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://main.gd" type="Script" id=1]
+[ext_resource path="res://res/gde_theme.tres" type="Theme" id=2]
+[ext_resource path="res://res/texture/mine_with_pick.png" type="Texture" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
+border_width_left = 26
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.937255, 0.545098, 0.129412, 1 )
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id=2]
+content_margin_left = 6.0
+content_margin_right = 4.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.937255, 0.545098, 0.129412, 1 )
+border_blend = true
+
+[node name="main" type="Node"]
+script = ExtResource( 1 )
+
+[node name="ui" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ui"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ui/HBoxContainer"]
+margin_right = 335.0
+margin_bottom = 600.0
+
+[node name="Label" type="Label" parent="ui/HBoxContainer/VBoxContainer"]
+margin_right = 335.0
+margin_bottom = 29.0
+text = "Galactic Dwarven Empire"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ui/HBoxContainer/VBoxContainer"]
+editor/display_folded = true
+margin_top = 33.0
+margin_right = 335.0
+margin_bottom = 105.0
+
+[node name="mine_button" type="Button" parent="ui/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_right = 122.0
+margin_bottom = 72.0
+text = "Mine"
+icon = ExtResource( 3 )
+
+[node name="hire_button" type="Button" parent="ui/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 126.0
+margin_right = 182.0
+margin_bottom = 72.0
+text = "Hire"
+
+[node name="automate_button" type="Button" parent="ui/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 186.0
+margin_right = 286.0
+margin_bottom = 72.0
+text = "Automate"
+
+[node name="buy_button" type="Button" parent="ui/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 290.0
+margin_right = 335.0
+margin_bottom = 72.0
+text = "Buy"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ui/HBoxContainer/VBoxContainer"]
+margin_top = 109.0
+margin_right = 335.0
+margin_bottom = 409.0
+rect_min_size = Vector2( 0, 300 )
+size_flags_horizontal = 3
+scroll_horizontal_enabled = false
+
+[node name="hired_worker_list" type="VBoxContainer" parent="ui/HBoxContainer/VBoxContainer/ScrollContainer"]
+margin_right = 335.0
+size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="ui/HBoxContainer"]
+margin_left = 339.0
+margin_right = 570.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ui/HBoxContainer"]
+margin_left = 574.0
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ui/HBoxContainer/VBoxContainer2"]
+margin_right = 450.0
+margin_bottom = 29.0
+
+[node name="Label" type="Label" parent="ui/HBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_right = 162.0
+margin_bottom = 29.0
+text = "Energy Shards:"
+
+[node name="ec_label_hex" type="Label" parent="ui/HBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_left = 166.0
+margin_top = 2.0
+margin_right = 218.0
+margin_bottom = 27.0
+custom_styles/normal = SubResource( 1 )
+text = "0x"
+align = 2
+
+[node name="ec_label_byte78" type="Label" parent="ui/HBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_left = 222.0
+margin_top = 2.0
+margin_right = 276.0
+margin_bottom = 27.0
+custom_styles/normal = SubResource( 2 )
+text = "0000"
+align = 2
+
+[node name="ec_label_byte56" type="Label" parent="ui/HBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_left = 280.0
+margin_top = 2.0
+margin_right = 334.0
+margin_bottom = 27.0
+custom_styles/normal = SubResource( 2 )
+text = "0000"
+align = 2
+
+[node name="ec_label_byte34" type="Label" parent="ui/HBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_left = 338.0
+margin_top = 2.0
+margin_right = 392.0
+margin_bottom = 27.0
+custom_styles/normal = SubResource( 2 )
+text = "0000"
+align = 2
+
+[node name="ec_label_byte12" type="Label" parent="ui/HBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_left = 396.0
+margin_top = 2.0
+margin_right = 450.0
+margin_bottom = 27.0
+custom_styles/normal = SubResource( 2 )
+text = "0000"
+align = 2
+
+[connection signal="pressed" from="ui/HBoxContainer/VBoxContainer/HBoxContainer/mine_button" to="." method="_on_mine_button_pressed"]
+[connection signal="pressed" from="ui/HBoxContainer/VBoxContainer/HBoxContainer/hire_button" to="." method="_on_hire_button_pressed"]
