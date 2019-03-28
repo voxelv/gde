@@ -22,7 +22,9 @@ config/icon="res://icon.png"
 [autoload]
 
 gde_const="*res://const.gd"
+player_data="*res://player_data.gd"
 
 [rendering]
 
+quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"
