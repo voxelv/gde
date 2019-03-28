@@ -41,59 +41,66 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ui/HBoxContainer"]
-margin_right = 335.0
+margin_right = 261.0
 margin_bottom = 600.0
 
 [node name="Label" type="Label" parent="ui/HBoxContainer/VBoxContainer"]
-margin_right = 335.0
+margin_right = 261.0
 margin_bottom = 29.0
 text = "Galactic Dwarven Empire"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ui/HBoxContainer/VBoxContainer"]
-editor/display_folded = true
 margin_top = 33.0
-margin_right = 335.0
+margin_right = 261.0
 margin_bottom = 105.0
 
 [node name="mine_button" type="Button" parent="ui/HBoxContainer/VBoxContainer/HBoxContainer"]
-margin_right = 122.0
+margin_right = 128.0
 margin_bottom = 72.0
+size_flags_horizontal = 3
 text = "Mine"
 icon = ExtResource( 3 )
 
 [node name="hire_button" type="Button" parent="ui/HBoxContainer/VBoxContainer/HBoxContainer"]
-margin_left = 126.0
-margin_right = 182.0
+margin_left = 132.0
+margin_right = 261.0
 margin_bottom = 72.0
+size_flags_horizontal = 3
 text = "Hire"
 
-[node name="automate_button" type="Button" parent="ui/HBoxContainer/VBoxContainer/HBoxContainer"]
-margin_left = 186.0
-margin_right = 286.0
-margin_bottom = 72.0
+[node name="HBoxContainer2" type="HBoxContainer" parent="ui/HBoxContainer/VBoxContainer"]
+margin_top = 109.0
+margin_right = 261.0
+margin_bottom = 138.0
+
+[node name="automate_button" type="Button" parent="ui/HBoxContainer/VBoxContainer/HBoxContainer2"]
+margin_right = 128.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
 text = "Automate"
 
-[node name="buy_button" type="Button" parent="ui/HBoxContainer/VBoxContainer/HBoxContainer"]
-margin_left = 290.0
-margin_right = 335.0
-margin_bottom = 72.0
+[node name="buy_button" type="Button" parent="ui/HBoxContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 132.0
+margin_right = 261.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
 text = "Buy"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ui/HBoxContainer/VBoxContainer"]
-margin_top = 109.0
-margin_right = 335.0
-margin_bottom = 409.0
+margin_top = 142.0
+margin_right = 261.0
+margin_bottom = 442.0
 rect_min_size = Vector2( 0, 300 )
 size_flags_horizontal = 3
 scroll_horizontal_enabled = false
 
 [node name="hired_worker_list" type="VBoxContainer" parent="ui/HBoxContainer/VBoxContainer/ScrollContainer"]
-margin_right = 335.0
+margin_right = 261.0
 size_flags_horizontal = 3
 
 [node name="Control" type="Control" parent="ui/HBoxContainer"]
-margin_left = 339.0
+margin_left = 265.0
 margin_right = 570.0
 margin_bottom = 600.0
 size_flags_horizontal = 3
@@ -156,6 +163,12 @@ margin_bottom = 27.0
 custom_styles/normal = SubResource( 2 )
 text = "0000"
 align = 2
+
+[node name="Node" type="Node" parent="."]
+
+[node name="production_timer" type="Timer" parent="Node"]
+wait_time = 0.05
+autostart = true
 
 [connection signal="pressed" from="ui/HBoxContainer/VBoxContainer/HBoxContainer/mine_button" to="." method="_on_mine_button_pressed"]
 [connection signal="pressed" from="ui/HBoxContainer/VBoxContainer/HBoxContainer/hire_button" to="." method="_on_hire_button_pressed"]
