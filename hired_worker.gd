@@ -4,8 +4,8 @@ signal produced
 
 onready var progress_list = find_node("progress_list")
 
-export(float) var teammate_multiplier = 1.2
-export(float) var max_work = 200.0
+export(float) var teammate_multiplier = 1.5
+export(float) var max_work = 100.0
 
 var work = 0.0
 var worker_cnt = 1

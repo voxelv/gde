@@ -30,6 +30,7 @@ border_blend = true
 
 [node name="main" type="Node"]
 script = ExtResource( 1 )
+hired_worker_cost_coeff = [ 0.15, 0.07 ]
 
 [node name="ui" type="Control" parent="."]
 editor/display_folded = true
@@ -176,17 +177,17 @@ size_flags_horizontal = 3
 
 [node name="Control" type="Control" parent="ui/MarginContainer/HBoxContainer"]
 margin_left = 265.0
-margin_right = 562.0
+margin_right = 540.0
 margin_bottom = 592.0
 size_flags_horizontal = 3
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="ui/MarginContainer/HBoxContainer"]
-margin_left = 566.0
+margin_left = 544.0
 margin_right = 1016.0
 margin_bottom = 592.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ui/MarginContainer/HBoxContainer/VBoxContainer2"]
-margin_right = 450.0
+margin_right = 472.0
 margin_bottom = 29.0
 
 [node name="Label" type="Label" parent="ui/MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
@@ -197,43 +198,43 @@ text = "Energy Shards:"
 [node name="ec_label_hex" type="Label" parent="ui/MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
 margin_left = 166.0
 margin_top = 2.0
-margin_right = 218.0
+margin_right = 240.0
 margin_bottom = 27.0
 custom_styles/normal = SubResource( 1 )
-text = "0x"
+text = "HEX:"
 align = 2
 
 [node name="ec_label_byte78" type="Label" parent="ui/MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
-margin_left = 222.0
+margin_left = 244.0
 margin_top = 2.0
-margin_right = 276.0
+margin_right = 298.0
 margin_bottom = 27.0
 custom_styles/normal = SubResource( 2 )
 text = "0000"
 align = 2
 
 [node name="ec_label_byte56" type="Label" parent="ui/MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
-margin_left = 280.0
+margin_left = 302.0
 margin_top = 2.0
-margin_right = 334.0
+margin_right = 356.0
 margin_bottom = 27.0
 custom_styles/normal = SubResource( 2 )
 text = "0000"
 align = 2
 
 [node name="ec_label_byte34" type="Label" parent="ui/MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
-margin_left = 338.0
+margin_left = 360.0
 margin_top = 2.0
-margin_right = 392.0
+margin_right = 414.0
 margin_bottom = 27.0
 custom_styles/normal = SubResource( 2 )
 text = "0000"
 align = 2
 
 [node name="ec_label_byte12" type="Label" parent="ui/MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
-margin_left = 396.0
+margin_left = 418.0
 margin_top = 2.0
-margin_right = 450.0
+margin_right = 472.0
 margin_bottom = 27.0
 custom_styles/normal = SubResource( 2 )
 text = "0000"
