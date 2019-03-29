@@ -6,7 +6,7 @@ const max_int = 1152921504606846975
 
 export var hired_worker_cost_coeff = [0.7, 0.15]
 
-var hire_group = preload("res://hired_worker_group.tscn")
+var hire_group = preload("res://worker_group.tscn")
 
 onready var ec_label_bytes = [
 	find_node("ec_label_byte78"),
@@ -14,11 +14,16 @@ onready var ec_label_bytes = [
 	find_node("ec_label_byte34"),
 	find_node("ec_label_byte12"),
 	]
+onready var shard_target = find_node("shard_target")
+onready var mine_button = find_node("mine_button")
 onready var worker_section = find_node("worker_section")
 onready var worker_cost_label = find_node("worker_cost_label")
 onready var worker_count_label = find_node("worker_count_label")
 onready var hired_worker_list = find_node("hired_worker_list")
+onready var worker_list_shard_start = find_node("worker_list_shard_start")
 onready var production_timer:Timer = find_node("production_timer") as Timer
+
+onready var shard_emitter = find_node("shard_emitter")
 
 var ui_dirty = true
 var hired_worker_cost = 0x10
@@ -27,6 +32,7 @@ var hired_worker_cnt = 0
 func _ready():
 	calc_worker_cost()
 	production_timer.connect("timeout", self, "_on_production_timer_timeout")
+	shard_emitter.connect("shard_finished", self, "_on_shard_finished")
 
 func _process(delta):
 	if ui_dirty:
@@ -47,8 +53,9 @@ func update_ui():
 	worker_count_label.text = "%X" % hired_worker_cnt
 
 func _on_mine_button_pressed():
-	player_data.energy_credits += 1
-	ui_dirty = true
+	var from = mine_button.get_global_rect()
+	var to = shard_target.get_global_rect()
+	shard_emitter.new_flying_shard(from, to, 1)
 
 func calc_worker_cost():
 	var w = hired_worker_cnt
@@ -73,14 +80,18 @@ func hire_worker():
 		worker_group.worker_cnt += 1
 
 func _on_hired_worker_produced(amt):
-	player_data.energy_credits += amt
-	ui_dirty = true
+	var from = worker_list_shard_start.get_global_rect()
+	var to = shard_target.get_global_rect()
+	shard_emitter.new_flying_shard(from, to, amt)
 
 func _on_production_timer_timeout():
 	emit_signal("production_tick")
 	production_timer.start()
 
-
 func _on_ui_update_periodic_timeout():
 	update_ui()
 	find_node("ui_update_periodic").start()
+
+func _on_shard_finished(amount):
+	player_data.energy_credits += amount
+	ui_dirty = true

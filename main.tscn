@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://res/gde_theme.tres" type="Theme" id=2]
 [ext_resource path="res://res/texture/mine_with_pick.png" type="Texture" id=3]
+[ext_resource path="res://shard_emitter.gd" type="Script" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 content_margin_top = 2.0
@@ -33,7 +34,6 @@ script = ExtResource( 1 )
 hired_worker_cost_coeff = [ 0.15, 0.07 ]
 
 [node name="ui" type="Control" parent="."]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 2 )
@@ -97,7 +97,8 @@ text = "Buy"
 [node name="worker_section" type="VBoxContainer" parent="ui/MarginContainer/HBoxContainer/VBoxContainer"]
 margin_top = 109.0
 margin_right = 261.0
-margin_bottom = 475.0
+margin_bottom = 592.0
+size_flags_vertical = 3
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="ui/MarginContainer/HBoxContainer/VBoxContainer/worker_section"]
 editor/display_folded = true
@@ -162,18 +163,24 @@ margin_right = 200.0
 margin_bottom = 29.0
 text = "0000"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="ui/MarginContainer/HBoxContainer/VBoxContainer/worker_section"]
-editor/display_folded = true
+[node name="worker_list_shard_start" type="Control" parent="ui/MarginContainer/HBoxContainer/VBoxContainer/worker_section"]
 margin_top = 66.0
 margin_right = 261.0
-margin_bottom = 366.0
-rect_min_size = Vector2( 0, 300 )
+margin_bottom = 66.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ui/MarginContainer/HBoxContainer/VBoxContainer/worker_section"]
+margin_top = 70.0
+margin_right = 261.0
+margin_bottom = 483.0
 size_flags_horizontal = 3
+size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="hired_worker_list" type="VBoxContainer" parent="ui/MarginContainer/HBoxContainer/VBoxContainer/worker_section/ScrollContainer"]
 margin_right = 261.0
+margin_bottom = 413.0
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Control" type="Control" parent="ui/MarginContainer/HBoxContainer"]
 margin_left = 265.0
@@ -195,10 +202,14 @@ margin_right = 162.0
 margin_bottom = 29.0
 text = "Energy Shards:"
 
-[node name="ec_label_hex" type="Label" parent="ui/MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+[node name="shard_target" type="HBoxContainer" parent="ui/MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
 margin_left = 166.0
-margin_top = 2.0
 margin_right = 240.0
+margin_bottom = 29.0
+
+[node name="ec_label_hex" type="Label" parent="ui/MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer/shard_target"]
+margin_top = 2.0
+margin_right = 74.0
 margin_bottom = 27.0
 custom_styles/normal = SubResource( 1 )
 text = "HEX:"
@@ -246,10 +257,8 @@ align = 2
 wait_time = 0.05
 autostart = true
 
-[node name="ui_update_periodic" type="Timer" parent="Node"]
-wait_time = 0.2
-autostart = true
+[node name="shard_emitter" type="Node2D" parent="."]
+script = ExtResource( 4 )
 
 [connection signal="pressed" from="ui/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/mine_button" to="." method="_on_mine_button_pressed"]
 [connection signal="pressed" from="ui/MarginContainer/HBoxContainer/VBoxContainer/worker_section/HBoxContainer3/hire_button" to="." method="_on_hire_button_pressed"]
-[connection signal="timeout" from="Node/ui_update_periodic" to="." method="_on_ui_update_periodic_timeout"]

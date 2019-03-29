@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://res/gde_theme.tres" type="Theme" id=1]
-[ext_resource path="res://hired_worker.gd" type="Script" id=2]
+[ext_resource path="res://worker_group.gd" type="Script" id=2]
 [ext_resource path="res://res/texture/hired_worker.png" type="Texture" id=3]
 
 [node name="hired_worker_group" type="HBoxContainer"]
