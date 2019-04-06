@@ -88,10 +88,6 @@ func _on_production_timer_timeout():
 	emit_signal("production_tick")
 	production_timer.start()
 
-func _on_ui_update_periodic_timeout():
-	update_ui()
-	find_node("ui_update_periodic").start()
-
 func _on_shard_finished(amount):
 	player_data.energy_credits += amount
 	ui_dirty = true
