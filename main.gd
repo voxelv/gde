@@ -22,16 +22,19 @@ onready var worker_count_label = find_node("worker_count_label")
 onready var hired_worker_list = find_node("hired_worker_list")
 onready var worker_list_shard_start = find_node("worker_list_shard_start")
 onready var production_timer:Timer = find_node("production_timer") as Timer
+onready var crystal_timer:Timer = find_node("crystal_timer") as Timer
 
 onready var shard_emitter = find_node("shard_emitter")
 
 var ui_dirty = true
 var hired_worker_cost = 0x10
 var hired_worker_cnt = 0
+var hired_worker_shard_accumulator = 0
 
 func _ready():
 	calc_worker_cost()
 	production_timer.connect("timeout", self, "_on_production_timer_timeout")
+	crystal_timer.connect("timeout", self, "_on_crystal_timer_timeout")
 	shard_emitter.connect("shard_finished", self, "_on_shard_finished")
 
 func _process(delta):
@@ -80,9 +83,15 @@ func hire_worker():
 		worker_group.worker_cnt += 1
 
 func _on_hired_worker_produced(amt):
+	hired_worker_shard_accumulator += amt
+
+func _on_crystal_timer_timeout():
 	var from = worker_list_shard_start.get_global_rect()
 	var to = shard_target.get_global_rect()
-	shard_emitter.new_flying_shard(from, to, amt)
+	if hired_worker_shard_accumulator > 0:
+		shard_emitter.new_flying_shard(from, to, hired_worker_shard_accumulator)
+		hired_worker_shard_accumulator = 0
+	crystal_timer.start()
 
 func _on_production_timer_timeout():
 	emit_signal("production_tick")

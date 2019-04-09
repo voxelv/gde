@@ -257,6 +257,10 @@ align = 2
 wait_time = 0.05
 autostart = true
 
+[node name="crystal_timer" type="Timer" parent="Node"]
+wait_time = 0.33
+autostart = true
+
 [node name="shard_emitter" type="Node2D" parent="."]
 script = ExtResource( 4 )
 

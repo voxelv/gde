@@ -6,6 +6,8 @@
 
 [node name="flying_shard" type="Node2D"]
 script = ExtResource( 1 )
+shard_speed_min = 200
+shard_speed_max = 500
 
 [node name="shard_sprite" type="Sprite" parent="."]
 self_modulate = Color( 1, 1, 1, 0.560784 )

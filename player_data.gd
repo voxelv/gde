@@ -2,6 +2,7 @@ extends Node
 
 var energy_credits = 0
 var milestone = []
+var highest_shard_value = 0
 
 func _init():
 	for i in range(gde_const.MILESTONE.COUNT):
