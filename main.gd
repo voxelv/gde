@@ -34,7 +34,7 @@ var hired_worker_shard_accumulator = 0
 func _ready():
 	calc_worker_cost()
 	production_timer.connect("timeout", self, "_on_production_timer_timeout")
-	crystal_timer.connect("timeout", self, "_on_crystal_timer_timeout")
+#	crystal_timer.connect("timeout", self, "_on_crystal_timer_timeout")
 	shard_emitter.connect("shard_finished", self, "_on_shard_finished")
 
 func _process(delta):
@@ -72,18 +72,20 @@ func _on_hire_button_pressed():
 		calc_worker_cost()
 
 func hire_worker():
-	hired_worker_cnt += 1
-	if (hired_worker_cnt % gde_const.WORKERS_PER_GROUP) == 1:
-		var new_worker_group = hire_group.instance()
-		hired_worker_list.add_child(new_worker_group)
-		production_timer.connect("timeout", new_worker_group, "_on_production_tick")
-		new_worker_group.connect("produced", self, "_on_hired_worker_produced")
-	else:
-		var worker_group = hired_worker_list.get_child((hired_worker_cnt - 1) / gde_const.WORKERS_PER_GROUP)
-		worker_group.worker_cnt += 1
+	for i in range(200):
+		hired_worker_cnt += 1
+		if (hired_worker_cnt % gde_const.WORKERS_PER_GROUP) == 1:
+			var new_worker_group = hire_group.instance()
+			hired_worker_list.add_child(new_worker_group)
+			production_timer.connect("timeout", new_worker_group, "_on_production_tick")
+			new_worker_group.connect("produced", self, "_on_hired_worker_produced")
+		else:
+			var worker_group = hired_worker_list.get_child((hired_worker_cnt - 1) / gde_const.WORKERS_PER_GROUP)
+			worker_group.worker_cnt += 1
 
 func _on_hired_worker_produced(amt):
 	hired_worker_shard_accumulator += amt
+	_on_crystal_timer_timeout()
 
 func _on_crystal_timer_timeout():
 	var from = worker_list_shard_start.get_global_rect()

@@ -163,12 +163,12 @@ margin_right = 200.0
 margin_bottom = 29.0
 text = "0000"
 
-[node name="worker_list_shard_start" type="Control" parent="ui/MarginContainer/HBoxContainer/VBoxContainer/worker_section"]
+[node name="Control" type="Control" parent="ui/MarginContainer/HBoxContainer/VBoxContainer/worker_section"]
 margin_top = 66.0
 margin_right = 261.0
 margin_bottom = 66.0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="ui/MarginContainer/HBoxContainer/VBoxContainer/worker_section"]
+[node name="worker_list_shard_start" type="ScrollContainer" parent="ui/MarginContainer/HBoxContainer/VBoxContainer/worker_section"]
 margin_top = 70.0
 margin_right = 261.0
 margin_bottom = 483.0
@@ -176,7 +176,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
-[node name="hired_worker_list" type="VBoxContainer" parent="ui/MarginContainer/HBoxContainer/VBoxContainer/worker_section/ScrollContainer"]
+[node name="hired_worker_list" type="VBoxContainer" parent="ui/MarginContainer/HBoxContainer/VBoxContainer/worker_section/worker_list_shard_start"]
 margin_right = 261.0
 margin_bottom = 413.0
 size_flags_horizontal = 3
@@ -258,7 +258,7 @@ wait_time = 0.05
 autostart = true
 
 [node name="crystal_timer" type="Timer" parent="Node"]
-wait_time = 0.33
+wait_time = 0.05
 autostart = true
 
 [node name="shard_emitter" type="Node2D" parent="."]

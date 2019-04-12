@@ -1,6 +1,6 @@
 extends Node
 
-var energy_credits = 0
+var energy_credits = 10000000000
 var milestone = []
 var highest_shard_value = 0
 
